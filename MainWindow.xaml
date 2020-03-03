@@ -1,0 +1,51 @@
+﻿<Window x:Class="Aflevering1WPF.MainWindow"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:local="clr-namespace:Aflevering1WPF"
+mc:Ignorable="d"
+Title="MainWindow" Height="450" Width="800">
+    <Grid x:Name="gridOuter">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition x:Name="ListRow"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <MenuItem Header="_Open"  x:Name="OpenFile" Click="OpenFile_Click" />
+        </Menu>
+
+        <ListBox Grid.Row="1" Grid.Column="0" FontSize="30" HorizontalAlignment="Stretch" x:Name="listBox"
+DisplayMemberPath="ListBoxToString"
+IsSynchronizedWithCurrentItem="True"
+ItemsSource="{Binding}"/>
+        <Grid x:Name="UserSpec" Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBox x:Name="NameField" Grid.Row="0" Height="30" Text="{Binding Path= Name}"/>
+            <TextBox x:Name="AgeField" Grid.Row="1" Height="30" Text="{Binding Path= Age}"/>
+            <TextBox x:Name="IdField" Grid.Row="2" Height="30" Text="{Binding Path= Id}"/>
+            <TextBox x:Name="ScoreField" Grid.Row="3" Height="30" Text="{Binding Path= Score}"/>
+            <Button x:Name="updateList" Click="updateList_Click" Grid.Row="4">Update List!</Button>
+
+        </Grid>
+        <StatusBar Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0">
+            <StatusBarItem HorizontalAlignment="Left">
+                <Label Name="ListCount"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <Label Name="LastUpdate"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>
